@@ -86,7 +86,7 @@ public partial class Reactive<T> : Resource, IReactive<T>
     // Constructors
     protected Reactive() : this(null) { }
 
-    public Reactive(IReactive? owner, T? value = default)
+    public Reactive(IReactive? owner=null, T? value = default)
     {
       Owner = owner;
 
