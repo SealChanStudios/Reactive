@@ -7,7 +7,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Reactive</PackageId>
-        <Version>1.0.5</Version>
+        <Version>1.0.6</Version>
         <Authors>Lua-cat</Authors>
         <Description>A Library for making "React like" data structures for game dev.</Description>
     </PropertyGroup>
