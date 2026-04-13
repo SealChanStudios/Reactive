@@ -30,7 +30,7 @@ public partial class Reactive<T> : Resource, IReactive<T>
             if (_owner != null)
             {
                 // Unsubscribe the old owner from my change
-                ReactiveChanged -= _owner._OwnerPropagate;
+                ReactiveChanged -= _owner.OwnerPropagate;
             }
 
             _owner = value;
@@ -38,7 +38,7 @@ public partial class Reactive<T> : Resource, IReactive<T>
             if (_owner != null)
             {
                 // Subscribe new owner to my change
-                ReactiveChanged += _owner._OwnerPropagate;
+                ReactiveChanged += _owner.OwnerPropagate;
             }
         }
     }
@@ -64,7 +64,7 @@ public partial class Reactive<T> : Resource, IReactive<T>
     public void Reactivity(bool reactive = true) => IsReactive=reactive;
 
     // Propagate changes to owner
-    public void _OwnerPropagate(IReactive obj) => Invoke();
+    public void OwnerPropagate(IReactive obj) => Invoke();
 
     // Invoke all events
     public void Invoke()

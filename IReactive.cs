@@ -4,7 +4,7 @@ public interface IReactive
 {
   event Action<IReactive>? ReactiveChanged;
   IReactive? Owner { get; set; }
-  void _OwnerPropagate(IReactive obj);
+  void OwnerPropagate(IReactive obj);
   void Invoke();
   object? UntypedValue { get; }
   void Reactivity(bool reactive = true);
