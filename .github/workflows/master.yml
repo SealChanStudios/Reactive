@@ -14,11 +14,11 @@ jobs:
       packages: write
 
     steps:
-      - name: Checkout tag commit
+      - name: Checkout exact tag
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.ref }}
+          ref: ${{ github.ref_name }}
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
