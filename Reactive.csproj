@@ -12,7 +12,7 @@
         <Title>Reactive</Title>
         <PackageId>Reactive</PackageId>
         <Authors>Lua-cat</Authors>
-        <Description>A Library for making "React like" data structures for game dev.</Description>
+        <Description>A Library for making "React like" data structures for game dev in godot.</Description>
 
 
 
