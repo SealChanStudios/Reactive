@@ -18,6 +18,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0   # REQUIRED for NBGV to compute version
+      - name: Show ref
+        run: git rev-parse --abbrev-ref HEAD && git describe --tags
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
