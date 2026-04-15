@@ -1,5 +1,7 @@
 name: Release
-
+permissions:
+  contents: read
+  packages: write
 on:
   push:
     tags:
@@ -9,3 +11,6 @@ jobs:
   publish:
     uses: Lua-cat/ci-templates/.github/workflows/nuget-minver.yml@main
     secrets: inherit
+    permissions:
+      contents: read
+      packages: write
