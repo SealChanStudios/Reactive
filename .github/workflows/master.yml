@@ -20,11 +20,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
+      - name: Debug git state
+        run: |
+          git log -5 --oneline
+          git describe --tags --long
+          git status
 
       # ✅ ONLY ONE NBGV SYSTEM (IMPORTANT)
       - name: NBGV calculate version
