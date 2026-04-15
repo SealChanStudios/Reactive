@@ -14,7 +14,4 @@
         <Authors>Lua-cat</Authors>
         <Description>A Library for making "React like" data structures for game dev.</Description>
     </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Include="Nerdbank.GitVersioning" Version="3.9.50" PrivateAssets="all" />
-    </ItemGroup>
 </Project>
