@@ -111,7 +111,7 @@ public partial class Reactive<T> : Resource, IReactive<T>
     
     #endregion
     
-    private bool Valid() => Value != null;
+    protected virtual bool Valid() => Value != null;
 
     public virtual bool IsValid() => Valid();
 }
