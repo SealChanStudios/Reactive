@@ -6,8 +6,11 @@
         <LangVersion>preview</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+
+        <OutputPath>./nupkg</OutputPath>
+
+        <Title>Reactive</Title>
         <PackageId>Reactive</PackageId>
-        <Version>1.0.6</Version>
         <Authors>Lua-cat</Authors>
         <Description>A Library for making "React like" data structures for game dev.</Description>
     </PropertyGroup>

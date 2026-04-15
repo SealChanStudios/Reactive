@@ -1,0 +1,59 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Reactive/1.1.0-g5f1769b52e": {
+        "dependencies": {
+          "Godot.SourceGenerators": "4.6.0-limboai-v1.6.0.gha",
+          "GodotSharp": "4.6.0-limboai-v1.6.0.gha",
+          "Nerdbank.GitVersioning": "3.9.50"
+        },
+        "runtime": {
+          "Reactive.dll": {}
+        }
+      },
+      "Godot.SourceGenerators/4.6.0-limboai-v1.6.0.gha": {},
+      "GodotSharp/4.6.0-limboai-v1.6.0.gha": {
+        "runtime": {
+          "lib/net8.0/GodotSharp.dll": {
+            "assemblyVersion": "4.6.0.0",
+            "fileVersion": "4.6.0.0"
+          }
+        }
+      },
+      "Nerdbank.GitVersioning/3.9.50": {}
+    }
+  },
+  "libraries": {
+    "Reactive/1.1.0-g5f1769b52e": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Godot.SourceGenerators/4.6.0-limboai-v1.6.0.gha": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Rp05KeWb36An4TqMGqtJgNCwxWqiksP0eSrOy91OvREx+D+9I4laTL+PSkd7YadCkqJivkYi0swQoV3++l6U+g==",
+      "path": "godot.sourcegenerators/4.6.0-limboai-v1.6.0.gha",
+      "hashPath": "godot.sourcegenerators.4.6.0-limboai-v1.6.0.gha.nupkg.sha512"
+    },
+    "GodotSharp/4.6.0-limboai-v1.6.0.gha": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vIc6BibXmO+RKnrEa9ropPnCEYEexG9tKmV8RS/lNUG1di212woV5RxPclRP1NW3esiMkhKrVHIyo81WAv4y6g==",
+      "path": "godotsharp/4.6.0-limboai-v1.6.0.gha",
+      "hashPath": "godotsharp.4.6.0-limboai-v1.6.0.gha.nupkg.sha512"
+    },
+    "Nerdbank.GitVersioning/3.9.50": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HtOgGF6jZ+WYbXnCUCYPT8Y2d6mIJo9ozjK/FINTRsXdm4Zgv9GehUMa7EFoGQkqrMcDJNOIDwCmENnvXg4UbA==",
+      "path": "nerdbank.gitversioning/3.9.50",
+      "hashPath": "nerdbank.gitversioning.3.9.50.nupkg.sha512"
+    }
+  }
+}
