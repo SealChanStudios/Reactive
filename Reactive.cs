@@ -7,7 +7,7 @@ public partial class Reactive<T> : Resource, IReactive<T>
 {
     // Non-generic event for propagation
     public event Action<IReactive>? ReactiveChanged;
-    public bool IsReactive { get; private set; } = true;
+    public bool IsReactive { get; protected set; } = true;
     public void Mute() => IsReactive = false;
     public void Unmute() => IsReactive = true;
 
