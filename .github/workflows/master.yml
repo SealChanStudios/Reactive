@@ -2,8 +2,6 @@ name: Build and Publish NuGet (NBGV)
 
 on:
   push:
-    branches:
-      - master
     tags:
       - "v*"
 
