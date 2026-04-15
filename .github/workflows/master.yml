@@ -17,40 +17,37 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # REQUIRED for NBGV to compute version
-      - name: Show ref
-        run: git rev-parse --abbrev-ref HEAD && git describe --tags
-      
+          fetch-depth: 0
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
 
-      - name: Install NBGV tool
-        run: dotnet tool install -g nbgv
-
-      - name: Set PATH for tools
-        run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
-
-      - name: Determine version
-        run: nbgv cloud
-      
-      - uses: dotnet/nbgv@master
+      # ✅ ONLY ONE NBGV SYSTEM (IMPORTANT)
+      - name: NBGV calculate version
+        uses: dotnet/nbgv@master
+        id: nbgv
         with:
-          stamp: package.json
-        
+          setAllVars: true
+
+      - name: Show version (debug)
+        run: |
+          echo "SemVer2: ${{ steps.nbgv.outputs.SemVer2 }}"
+          echo "NuGet: ${{ steps.nbgv.outputs.NuGetPackageVersion }}"
+
       - name: Restore
         run: dotnet restore
 
-      - name: Build (Release)
+      - name: Build
         run: dotnet build -c Release --no-restore
 
       - name: Pack
         run: dotnet pack -c Release --no-build --output ./nupkg
-      - name: Add GitHub Packages source
-        run: |
-          dotnet nuget add source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --name github --username ${{ github.actor }} --password ${{ secrets.NUGET_PUBLISH_TOKEN }} --store-password-in-clear-text
 
-      - name: Push package
+      - name: Push to GitHub Packages
         run: |
-          dotnet nuget push "./nupkg/*.nupkg" --source github --skip-duplicate --api-key ${{ secrets.NUGET_PUBLISH_TOKEN }}
+          dotnet nuget push "./nupkg/*.nupkg" \
+            --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" \
+            --api-key ${{ secrets.GITHUB_TOKEN }} \
+            --skip-duplicate
