@@ -88,7 +88,7 @@ public partial class Reactive<T> : Resource, IReactive<T>
 
     
 
-    // used by godot and other cases
+    // used by godot and other cases.
     protected Reactive() : this(null) { }
 
     public Reactive(IReactive? owner=null, T? value = default)
