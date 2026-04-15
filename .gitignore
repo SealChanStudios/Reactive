@@ -1,4 +1,5 @@
 bin/
+nupkb/
 obj/
 /packages/
 riderModule.iml
