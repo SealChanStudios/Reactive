@@ -1,0 +1,59 @@
+name: Build and Publish NuGet (NBGV)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # REQUIRED for NBGV to compute version
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install NBGV tool
+        run: dotnet tool install -g nbgv
+
+      - name: Set PATH for tools
+        run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Determine version
+        run: nbgv cloud
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build (Release)
+        run: dotnet build -c Release --no-restore
+
+      - name: Pack
+        run: dotnet pack -c Release --no-build --output ./nupkg
+
+      - name: Add GitHub Packages source
+        run: |
+          dotnet nuget add source
+            "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
+            --name github
+            --username ${{ github.actor }}
+            --password ${{ secrets.GITHUB_TOKEN }}
+            --store-password-in-clear-text
+
+      - name: Push package
+        run: |
+          dotnet nuget push "./nupkg/*.nupkg"
+            --source github
+            --skip-duplicate
+            --api-key ${{secrets.GITHUB_TOKEN}}
