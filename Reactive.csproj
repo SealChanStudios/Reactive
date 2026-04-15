@@ -13,5 +13,12 @@
         <PackageId>Reactive</PackageId>
         <Authors>Lua-cat</Authors>
         <Description>A Library for making "React like" data structures for game dev.</Description>
+
+
+
+        <MinVerTagPrefix>v</MinVerTagPrefix>
     </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="MinVer" Version="4.3.0" PrivateAssets="All" />
+    </ItemGroup>
 </Project>
