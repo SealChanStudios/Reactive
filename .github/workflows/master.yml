@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0   # REQUIRED for NBGV to compute version
       - name: Show ref
         run: git rev-parse --abbrev-ref HEAD && git describe --tags
-
+      
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -34,7 +34,11 @@ jobs:
 
       - name: Determine version
         run: nbgv cloud
-
+      
+      - uses: dotnet/nbgv@master
+        with:
+          stamp: package.json
+        
       - name: Restore
         run: dotnet restore
 
