@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "Reactive/1.1.0-g5f1769b52e": {
+      "Reactive/1.1.0-g691d169e9f": {
         "dependencies": {
           "Godot.SourceGenerators": "4.6.0-limboai-v1.6.0.gha",
           "GodotSharp": "4.6.0-limboai-v1.6.0.gha",
@@ -29,7 +29,7 @@
     }
   },
   "libraries": {
-    "Reactive/1.1.0-g5f1769b52e": {
+    "Reactive/1.1.0-g691d169e9f": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
