@@ -7,8 +7,9 @@ public partial class Reactive<T> : Resource, IReactive<T>
 {
     // Non-generic event for propagation
     public event Action<IReactive>? ReactiveChanged;
-    private bool IsReactive { get; set; } = true;
-
+    public bool IsReactive { get; private set; } = true;
+    public void Mute() => IsReactive = false;
+    public void Unmute() => IsReactive = true;
 
     // Typed event for type-safe subscriptions
     public event Action<IReactive<T>>? TypedChanged;
@@ -59,10 +60,10 @@ public partial class Reactive<T> : Resource, IReactive<T>
         }
     }
 
+    public void ChangeValueMuted(T? value) => _value = value;
+
     public object? UntypedValue => _value;
-
-    public void Reactivity(bool reactive = true) => IsReactive=reactive;
-
+    
     // Propagate changes to owner
     public void OwnerPropagate(IReactive obj) => Invoke();
 
