@@ -18,7 +18,7 @@ public partial class Reactive<T> : Resource, IReactive<T>
         remove => TypedChanged -= value;
     }
 
-    // NEW: Direct event passing the contained value
+    // Direct event passing the contained value
     public event Action<T?>? ValueChanged;
 
     private IReactive? _owner;
