@@ -1,4 +1,4 @@
-name: Build and Publish NuGet (NBGV)
+name: Release
 
 on:
   push:
@@ -6,54 +6,6 @@ on:
       - "v*"
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: write
-
-    steps:
-      - name: Checkout exact tag
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          fetch-tags: true
-          ref: ${{ github.ref_name }}
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
-      - name: Debug git state
-        run: |
-          git log -5 --oneline
-          git describe --tags --long
-          git status
-
-      # ✅ ONLY ONE NBGV SYSTEM (IMPORTANT)
-      - name: NBGV calculate version
-        uses: dotnet/nbgv@master
-        id: nbgv
-        with:
-          setAllVars: true
-
-      - name: Show version (debug)
-        run: |
-          echo "SemVer2: ${{ steps.nbgv.outputs.SemVer2 }}"
-          echo "NuGet: ${{ steps.nbgv.outputs.NuGetPackageVersion }}"
-
-      - name: Restore
-        run: dotnet restore
-
-      - name: Build
-        run: dotnet build -c Release --no-restore
-
-      - name: Pack
-        run: dotnet pack -c Release --no-build --output ./nupkg
-
-      - name: Push to GitHub Packages
-        run: |
-          dotnet nuget push "./nupkg/*.nupkg" \
-            --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" \
-            --api-key ${{ secrets.NUGET_PUBLISH_TOKEN }} \
-            --skip-duplicate
+  publish:
+    uses: Lua-cat/ci-templates/.github/workflows/nuget-minver.yml@main
+    secrets: inherit
