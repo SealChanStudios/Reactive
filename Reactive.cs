@@ -2,7 +2,7 @@
 
 namespace Reactive;
 
-// Generic reactive class
+// Generic class for reactive data
 public partial class Reactive<T> : Resource, IReactive<T>
 {
     // Non-generic event for propagation
