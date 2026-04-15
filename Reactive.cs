@@ -83,7 +83,10 @@ public partial class Reactive<T> : Resource, IReactive<T>
         ValueChanged?.Invoke(_value);
     }
 
-    // Constructors
+    #region Constructors
+
+    
+
     protected Reactive() : this(null) { }
 
     public Reactive(IReactive? owner=null, T? value = default)
@@ -105,7 +108,9 @@ public partial class Reactive<T> : Resource, IReactive<T>
     }
 
     public Reactive(T? value = default, IReactive? owner = null) : this(owner, value) { }
-
+    
+    #endregion
+    
     private bool Valid() => Value != null;
 
     public virtual bool IsValid() => Valid();
