@@ -104,6 +104,8 @@ public partial class Reactive<T> : Resource, IReactive<T>
       }
     }
 
+    public Reactive(T? value = default, IReactive? owner = null) : this(owner, value) { }
+
     private bool Valid() => Value != null;
 
     public virtual bool IsValid() => Valid();
