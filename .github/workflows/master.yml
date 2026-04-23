@@ -10,5 +10,5 @@ jobs:
     permissions:
       contents: read
       packages: write
-    uses: Lua-cat/ci-templates/.github/workflows/nuget-minver.yml@main
+    uses: SealChanStudios/ci-templates/.github/workflows/nuget-minver.yml@main
     secrets: inherit
