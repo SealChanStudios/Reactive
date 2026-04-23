@@ -105,7 +105,7 @@ public partial class Reactive<T> : Resource, IReactive<T>
       }
       else
       {
-        Value = default!;
+        Value = default;
       }
     }
 
