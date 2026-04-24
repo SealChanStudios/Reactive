@@ -1,6 +1,6 @@
 ﻿namespace Reactive;
 
-public interface IReactive
+public interface IReactive : INotifyChange
 {
   event Action<IReactive>? ReactiveChanged;
   IReactive? Owner { get; set; }
@@ -13,7 +13,7 @@ public interface IReactive
 }
 
 // Generic interface for typed access
-public interface IReactive<T> : IReactive
+public interface IReactive<T> : INotifyChange<T>,IReactive
 {
   new event Action<IReactive<T>>? ReactiveChanged;
   event Action<T?>? ValueChanged;

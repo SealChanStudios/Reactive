@@ -10,7 +10,7 @@
         <OutputPath>./nupkg</OutputPath>
 
         <Title>Reactive</Title>
-        <PackageId>Reactive</PackageId>
+        <PackageId>SealChanStudios.Reactive</PackageId>
         <Authors>Lua-cat</Authors>
         <Description>A Library for making "React like" data structures for game dev in godot.</Description>
 

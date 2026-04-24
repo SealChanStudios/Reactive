@@ -6,12 +6,14 @@ namespace Reactive;
 public partial class Reactive<T> : Resource, IReactive<T>
 {
     // Non-generic event for propagation
+    public event Action? OnChange;
     public event Action<IReactive>? ReactiveChanged;
     public bool IsReactive { get; protected set; } = true;
     public void Mute() => IsReactive = false;
     public void Unmute() => IsReactive = true;
 
     // Typed event for type-safe subscriptions
+    public event Action<T?>? NotifyChange;
     public event Action<IReactive<T>>? TypedChanged;
     event Action<IReactive<T>>? IReactive<T>.ReactiveChanged
     {
@@ -70,10 +72,10 @@ public partial class Reactive<T> : Resource, IReactive<T>
     // Invoke all events
     public void Invoke()
     {
-      if (!IsReactive)
-      {
+        if (!IsReactive)
+        {
         return;
-      }
+        }
         // Invoke non-generic event
         ReactiveChanged?.Invoke(this);
 
@@ -82,6 +84,10 @@ public partial class Reactive<T> : Resource, IReactive<T>
 
         // Invoke direct value event
         ValueChanged?.Invoke(_value);
+        
+        // Invoke NotifyChange Interface Events
+        OnChange?.Invoke();
+        NotifyChange?.Invoke(Value);
     }
 
     #region Constructors
